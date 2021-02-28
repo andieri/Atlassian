@@ -1,0 +1,23 @@
+{
+  "name": "atlassin_login_page_test",
+  "version": "1.0.0",
+  "description": "This a test set for Atlassian Login page",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "node ./node_modules/protractor/node_modules/webdriver-manager update",
+    "test": "node ./node_modules/protractor/bin/protractor protractor.conf.js"
+  },
+  "author": "Andrea Sutone Kovacs",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^7.0.0",
+    "chai": "^4.3.0",
+    "chai-as-promised": "^7.1.1",
+    "chai-string": "^1.5.0",
+    "cucumber-html-reporter": "^5.3.0",
+    "protractor": "^7.0.0",
+    "protractor-console-plugin": "^0.1.1",
+    "protractor-cucumber-framework": "^7.0.2",
+    "typescript": "^4.2.2"
+  }
+}
