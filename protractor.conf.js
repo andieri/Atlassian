@@ -1,10 +1,7 @@
 const
     seleniumUrl = '',
-    fs = require('fs'),
-    path = require('path'),
-    reportJson = 'reports/report.json',
-    chromeDriver = path.resolve(__dirname, '../../node_modules/protractor/node_modules/webdriver-manager/selenium/chromedriver_2.88.0.4324.96'),
-    seleniumJar = path.resolve(__dirname, '../../node_modules/protractor/node_modules/webdriver-manager/selenium/selenium-server-standalone-3.141.59.jar');
+    path = require('path');
+
 let browserVersion = '';
 
 exports.config = {
@@ -16,6 +13,7 @@ exports.config = {
     framework: 'custom',
     frameworkPath: require.resolve('protractor-cucumber-framework'),
 
+    SELENIUM_PROMISE_MANAGER: false,
     capabilities: {
         'browserName': (process.env.TEST_BROWSER_NAME || 'chrome'),
         'version': (process.env.TEST_BROWSER_VERSION || 'ANY'),
@@ -33,7 +31,7 @@ exports.config = {
         ],
         format: ['progress',
           'rerun:reports/@failed_scenarios.txt',
-          'json:reports/report.json',
+          // 'message',
           'usage-json:reports/step-usage.json'],
         tags: ['~@Manual', '~@Ignore'],
         'format-options': JSON.stringify({
@@ -57,34 +55,34 @@ exports.config = {
         browser.driver.getCapabilities().then(function (caps) {
             browserVersion = caps.get('version');
         });
-        global.EC = protractor.ExpectedConditions;
+        browser.ignoreSynchronization=true;
     },
 
     afterLaunch: function () {
-        const reporter = require('cucumber-html-reporter');
-        // const environment = browser.params.env.toUpperCase();
-        const options = {
-            name: 'Functional E2E Report',
-            brandTitle: 'Atlassion Login page',
-            theme: 'bootstrap',
-            jsonFile: 'reports/report.json',
-            output: 'reports/report.html',
-            reportSuiteAsScenarios: true,
-            launchReport: false,
-            screenshotsDirectory: 'reports/screenshots/',
-            storeScreenshots: true,
-            metadata: {}
-        };
-        reporter.generate(options);
+        // const reporter = require('cucumber-html-reporter');
+        // // const environment = browser.params.env.toUpperCase();
+        // const options = {
+        //     name: 'Functional E2E Report',
+        //     brandTitle: 'Atlassion Login page',
+        //     theme: 'bootstrap',
+        //     jsonFile: 'reports/report.json',
+        //     output: 'reports/report.html',
+        //     reportSuiteAsScenarios: true,
+        //     launchReport: false,
+        //     screenshotsDirectory: 'reports/screenshots/',
+        //     storeScreenshots: true,
+        //     metadata: {}
+        // };
+        // reporter.generate(options);
     },
 
     plugins: [
-        {
-            package: 'protractor-console-plugin',
-            failOnWarning: false,
-            failOnError: false,
-            logWarnings: true
-        }
+    //     {
+    //         package: 'protractor-console-plugin',
+    //         failOnWarning: false,
+    //         failOnError: false,
+    //         logWarnings: true
+    //     }
     ]
 }
 ;

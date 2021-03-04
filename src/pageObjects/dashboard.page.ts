@@ -1,0 +1,24 @@
+import {by, element} from "protractor";
+
+class DashboardPage{
+
+  profileIcon = element(by.css('div#root div > button[data-testid=nav__profile-menu-trigger]'));
+  logoutText = element(by.css('button[data-testid=nav__logout-btn]'));
+  logoutButton = element(by.css('button#logout-submit'));
+  homePage = element(by.cssContainingText('div#root a > button > div > div > span', 'Atlassian.com'));
+
+  public async openProfileIcon(){
+    await this.profileIcon.click();
+  }
+  public async clickLogoutText(){
+    await this.logoutText.click();
+  }
+  public async clickOnLogoutButton(){
+    await this.logoutButton.click();
+  }
+  public async getTextOfHomePageIcon(){
+    await this.homePage.getText();
+  }
+
+}
+export const dashboadPage = new DashboardPage();
