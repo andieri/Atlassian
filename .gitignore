@@ -1,4 +1,8 @@
-#Ignore node modules
+# ignore node modules
 /node_modules
 
+# ignore config
 /.config
+
+#ignore reports folder
+/reports
