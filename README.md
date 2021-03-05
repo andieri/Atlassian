@@ -10,7 +10,7 @@ On Mac or Linux there is [completely separated project](https://github.com/nvm-s
 
 Set up the project and download the project dependencies first, so execute the ```npm install``` command. In post install phase the webdriver will be updated.
 
-To execute the tests just open up a terminal in the project folder and execute the ```npm test -- -suite=<suite> --params.plain.user=<your_username> --params.plain.password=<your_password> --params.google.username=<your_username> --params.google.password=<your_password>``` command.
+To execute the tests just open up a terminal in the project folder and execute the ```npm test -- --suite=<suite> --params.plain.user=<your_username> --params.plain.password=<your_password> --params.google.username=<your_username> --params.google.password=<your_password>``` command.
 
 ## Execution options
   Suites:
