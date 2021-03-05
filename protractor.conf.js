@@ -26,12 +26,14 @@ exports.config = {
     cucumberOpts: {
         'require-module': 'ts-node/register',
         require: [
-          './src/**/step_definitions/**/*.steps.ts',
-          './src/**/support/**/*.support.ts'
+          './src/step_definitions/*.steps.ts',
+          './src/pageObjects/*.page.ts',
+          './src/actions/*.ts'
         ],
         format: ['progress',
           'rerun:reports/@failed_scenarios.txt',
           // 'message',
+          'json:reports/report.json',
           'usage-json:reports/step-usage.json'],
         tags: ['~@Manual', '~@Ignore'],
         'format-options': JSON.stringify({
@@ -59,30 +61,33 @@ exports.config = {
     },
 
     afterLaunch: function () {
-        // const reporter = require('cucumber-html-reporter');
-        // // const environment = browser.params.env.toUpperCase();
-        // const options = {
-        //     name: 'Functional E2E Report',
-        //     brandTitle: 'Atlassion Login page',
-        //     theme: 'bootstrap',
-        //     jsonFile: 'reports/report.json',
-        //     output: 'reports/report.html',
-        //     reportSuiteAsScenarios: true,
-        //     launchReport: false,
-        //     screenshotsDirectory: 'reports/screenshots/',
-        //     storeScreenshots: true,
-        //     metadata: {}
-        // };
-        // reporter.generate(options);
+      /*
+      This plugin responsible for the Test report generation. In the current protractor version the json report generation is deprecated.
+      There is a workaround to use the current reporting format with this plugin. Because of the example implementation, it was not applied.
+      */
+        const reporter = require('cucumber-html-reporter');
+        const options = {
+            name: 'Functional E2E Report',
+            brandTitle: 'Atlassion Login page',
+            theme: 'bootstrap',
+            jsonFile: 'reports/report.json',
+            output: 'reports/report.html',
+            reportSuiteAsScenarios: true,
+            launchReport: false,
+            screenshotsDirectory: 'reports/screenshots/',
+            storeScreenshots: true,
+            metadata: {}
+        };
+        reporter.generate(options);
     },
 
     plugins: [
-    //     {
-    //         package: 'protractor-console-plugin',
-    //         failOnWarning: false,
-    //         failOnError: false,
-    //         logWarnings: true
-    //     }
+        {
+            package: 'protractor-console-plugin',
+            failOnWarning: false,
+            failOnError: false,
+            logWarnings: true
+        }
     ]
 }
 ;

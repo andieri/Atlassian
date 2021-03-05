@@ -7,15 +7,15 @@ class GoogleLoginPage{
   loginButton = element(by.css('div#passwordNext button[type="button"]'));
 
   public async typeIntoUsernameField(username:string){
-    await this.usernameField.sendKeys(username);
+    return this.usernameField.sendKeys(username);
   }
 
   public async typeIntoPasswordField(password:string){
-    await this.passwordField.sendKeys(password);
+    return this.passwordField.sendKeys(password);
   }
 
   public async clickOnLogin(){
-    await this.loginButton.click();
+    return this.loginButton.click();
   }
 
 }

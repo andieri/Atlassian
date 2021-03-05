@@ -5,7 +5,7 @@ class RegistrationPage{
   displayName = element(by.css('input#displayName'));
 
   public async getRegistrationFormHeaderText(){
-    await this.registrationHeader.getText();
+    return this.registrationHeader.getText();
   }
 
 }

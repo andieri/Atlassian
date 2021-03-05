@@ -1,10 +1,12 @@
 import {browser, ExpectedConditions as EC} from "protractor";
 import {dashboadPage} from "../pageObjects/dashboard.page";
 import * as chai from 'chai';
+import * as chaiString from 'chai-string';
 import * as chaiAsPromised from 'chai-as-promised';
 
-const customChai = chai.use(chaiAsPromised), expect = customChai.expect;
-
+const cChai = chai.use(chaiString);
+const customChai = cChai.use(chaiAsPromised);
+const expect = customChai.expect;
 
 export class Dashboard{
 
@@ -25,7 +27,6 @@ export class Dashboard{
     }
 
     public async isHomePageUp() {
-        const text = await dashboadPage.getTextOfHomePageIcon();
-        expect(text).to.equal('Atlassian.com');
+        expect(dashboadPage.getTextOfHomePageIcon()).to.eventually.equal('Atlassian.com');
     }
 }

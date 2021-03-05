@@ -8,16 +8,16 @@ class DashboardPage{
   homePage = element(by.cssContainingText('div#root a > button > div > div > span', 'Atlassian.com'));
 
   public async openProfileIcon(){
-    await this.profileIcon.click();
+    return this.profileIcon.click();
   }
   public async clickLogoutText(){
-    await this.logoutText.click();
+    return this.logoutText.click();
   }
   public async clickOnLogoutButton(){
-    await this.logoutButton.click();
+    return this.logoutButton.click();
   }
   public async getTextOfHomePageIcon(){
-    await this.homePage.getText();
+    return this.homePage.getText();
   }
 
 }

@@ -10,7 +10,7 @@ Feature: Atlassian - Login page - Plain login
     Given I open the Login page of Atlassian
     And I start the login process with my email
     When I log into Atlassian with my incorrect password
-    Then I get an error message with "Helytelen e-mail-cím és/vagy jelszó."
+    Then I get an error message with "Incorrect email address and / or password."
 
   Scenario: The user is on the registration form with an unknown email in the login process
     Given I open the Login page of Atlassian
